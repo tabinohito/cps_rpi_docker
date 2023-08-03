@@ -1,0 +1,15 @@
+[submodule "catkin_ws/src/sensor_pi"]
+	path = catkin_ws/src/sensor_pi
+	url = https://github.com/IRSL-tut/sensor_pi.git
+[submodule "catkin_ws/src/dynamixel-workbench"]
+	path = catkin_ws/src/dynamixel-workbench
+	url = https://github.com/IRSL-tut/dynamixel-workbench.git
+[submodule "catkin_ws/src/DynamixelSDK"]
+	path = catkin_ws/src/DynamixelSDK
+	url = https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+[submodule "catkin_ws/src/dynamixel-workbench-msgs"]
+	path = catkin_ws/src/dynamixel-workbench-msgs
+	url = https://github.com/ROBOTIS-GIT/dynamixel-workbench-msgs.git
+[submodule "catkin_ws/src/dynamixel_irsl_test"]
+	path = catkin_ws/src/dynamixel_irsl_test
+	url = https://github.com/IRSL-tut/dynamixel_irsl_test.git

@@ -1,0 +1,39 @@
+ARG BASE_IMAGE=ros:noetic-ros-core-focal
+FROM ${BASE_IMAGE}
+
+RUN apt update && \
+    DEBIAN_FRONTEND=nonineractive \
+    apt install -y make \
+                    build-essential \
+                    git \
+                    vim \
+                    python3-dev \
+                    python3 \
+                    python-is-python3 \
+                    curl \
+                    net-tools \
+                    ros-noetic-teleop-twist-keyboard \
+                    i2c-tools \
+                    python3-smbus \
+                    libeigen3* \
+                    libyaml-cpp-dev \
+                    libusb-1.0* && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/
+
+RUN curl -kLs https://bootstrap.pypa.io/get-pip.py | python3
+RUN pip3 install smbus2 pyftdi matplotlib
+RUN cd /tmp && \
+    git clone https://github.com/nonNoise/PyMCP2221A.git && \
+    cd  /tmp/PyMCP2221A/pypi/main && \
+    cp ../../PyMCP2221A/*.py PyMCP2221A/. && \
+    sed -i.bk -e "596i \ \ \ \ \ \ \ \ buf[3 + 1] |= 0x01" PyMCP2221A/PyMCP2221A.py && \
+    python3 setup.py build && \
+    python3 setup.py install
+RUN cd /tmp/ && \
+    git clone https://github.com/xioTechnologies/Fusion && cd Fusion && python3 setup.py build && python3 setup.py install
+
+#
+                    # ros-noetic-rqt* \
+                    # ros-noetic-rviz \
+                    # ros-noetic-rviz-imu-plugin && \
