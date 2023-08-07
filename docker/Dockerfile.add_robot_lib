@@ -33,7 +33,5 @@ RUN cd /tmp && \
 RUN cd /tmp/ && \
     git clone https://github.com/xioTechnologies/Fusion && cd Fusion && python3 setup.py build && python3 setup.py install
 
-#
-                    # ros-noetic-rqt* \
-                    # ros-noetic-rviz \
-                    # ros-noetic-rviz-imu-plugin && \
+COPY ros_entrypoint.sh /.
+RUN chmod +x /ros_entrypoint.sh
