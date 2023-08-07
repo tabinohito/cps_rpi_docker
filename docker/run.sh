@@ -19,5 +19,11 @@ ROS_SETTINGS="--env ROS_IP=${HOST_IP} --env ROS_MASTER_URI=http://${MASTER_IP}:1
 BUS_ID='1'
 GPIO_DEVICE_SETTINGS="--device /dev/gpiomem --device /dev/i2c-$BUS_ID --privileged"
 
+SUDO=""
+STRING=`groups|grep docker`
+if [ -z "$STRING" ]; then
+  SUDO="sudo "
+fi
+
 set -x
-sudo docker run -it --rm ${SERIAL_DEVICE_SETTINGS} ${GPIO_DEVICE_SETTINGS} ${USER_SETTING} ${VOLUME_SETTING} ${DISPLAY_SETTING} ${NET_SETTING} ${ROS_SETTINGS} ${WORKDIR_SETTING} --name ${CONTAINER_NAME} ${IMAGE_NAME} bash
+$SUDO docker run -it --rm ${SERIAL_DEVICE_SETTINGS} ${GPIO_DEVICE_SETTINGS} ${USER_SETTING} ${VOLUME_SETTING} ${DISPLAY_SETTING} ${NET_SETTING} ${ROS_SETTINGS} ${WORKDIR_SETTING} --name ${CONTAINER_NAME} ${IMAGE_NAME} bash

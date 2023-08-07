@@ -10,4 +10,5 @@ homedir/*
 userdir/*
 !userdir/.gitkeep
 !userdir/dynamixel_config.yaml
-!userdir/tof_sensor_with_hub.json
+!userdir/controller_config.yaml
+!userdir/robot_sensor.json

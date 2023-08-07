@@ -35,3 +35,4 @@ RUN cd /tmp/ && \
 
 COPY ros_entrypoint.sh /.
 RUN chmod +x /ros_entrypoint.sh
+ENV PYTHONDONTWRITEBYTECODE=1
