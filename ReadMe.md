@@ -61,7 +61,7 @@
     1. 本リポジトリをクローンする．
         ```
         cd ~
-        git clone --recursive https://github.com/Hiroaki-Masuzawa/cps_rpi_docker.git
+        git clone --recursive https://github.com/IRSL-tut/cps_rpi_docker.git
         ```
     1. docker imageのビルドする．(注意:2~3時間程度かかる)
         ```
