@@ -10,6 +10,6 @@
 [submodule "catkin_ws/src/dynamixel-workbench-msgs"]
 	path = catkin_ws/src/dynamixel-workbench-msgs
 	url = https://github.com/ROBOTIS-GIT/dynamixel-workbench-msgs.git
-[submodule "catkin_ws/src/dynamixel_irsl_test"]
-	path = catkin_ws/src/dynamixel_irsl_test
-	url = https://github.com/IRSL-tut/dynamixel_irsl_test.git
+[submodule "catkin_ws/src/dynamixel_irsl"]
+	path = catkin_ws/src/dynamixel_irsl
+	url = https://github.com/IRSL-tut/dynamixel_irsl

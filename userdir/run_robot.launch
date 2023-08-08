@@ -12,7 +12,7 @@
     <arg name="sensor_config_path"      default="/userdir/robot_sensor.json" />
 
     <!-- include launch files -->
-    <include file="$(find dynamixel_irsl_test)/launch/controllers.launch">
+    <include file="$(find dynamixel_irsl)/launch/controllers.launch">
         <arg name="usb_port"                value="$(arg usb_port)"/>
         <arg name="dxl_baud_rate"           value="$(arg dxl_baud_rate)"/>
         <arg name="namespace"               value="$(arg namespace)"/>
