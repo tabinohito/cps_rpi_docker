@@ -12,3 +12,4 @@ userdir/*
 !userdir/dynamixel_config.yaml
 !userdir/controller_config.yaml
 !userdir/robot_sensor.json
+!userdir/run_robot.launch

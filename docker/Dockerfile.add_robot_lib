@@ -36,3 +36,4 @@ RUN cd /tmp/ && \
 COPY ros_entrypoint.sh /.
 RUN chmod +x /ros_entrypoint.sh
 ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONPATH=$PYTHONPATH:/choreonoid_ws/install/lib/choreonoid-2.0/python

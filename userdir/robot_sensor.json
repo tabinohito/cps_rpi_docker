@@ -3,7 +3,7 @@
 		"0": {
 			"name": "TOFPublisher",
 			"address": "0x29",
-			"topic_name": "TOFsensor"
+			"topic_name": "TOFSensor/value"
 		},
 		"address": "0x70"
 	}
