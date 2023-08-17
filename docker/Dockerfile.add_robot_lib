@@ -17,7 +17,8 @@ RUN apt update && \
                     python3-smbus \
                     libeigen3* \
                     libyaml-cpp-dev \
-                    libusb-1.0* && \
+                    libusb-1.0* \
+                    ros-noetic-opencv-apps && \
     apt clean && \
     rm -rf /var/lib/apt/lists/
 
