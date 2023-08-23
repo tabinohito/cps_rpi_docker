@@ -80,3 +80,168 @@
         sudo udevadm control --reload-rules
         sudo udevadm trigger
         ```
+
+## 使用方法
+### センサ用configの設定
+userdir 内にあるrobot_sensor.jsonを使用するセンサに合わせて書き換える．(詳細は[ここ](https://github.com/IRSL-tut/sensor_pi/blob/main/README.md)を参照のこと)
+- (例1) TOFセンサ1つの場合
+    ```
+    {
+        "I2CHubPublisher": {
+            "0": {
+                "name": "TOFPublisher",
+                "address": "0x29",
+                "topic_name": "TOFSensor/value"
+            },
+            "address": "0x70"
+        }
+    }
+    ```
+- (例2) TOFセンサ2つの場合
+    ```
+    {
+        "I2CHubPublisher": {
+            "0": {
+                "name": "TOFPublisher",
+                "address": "0x29",
+                "topic_name": "TOFSensor1/value"
+            },
+            "1": {
+                "name": "TOFPublisher",
+                "address": "0x29",
+                "topic_name": "TOFSensor2/value"
+            },
+            "address": "0x70"
+        }
+    }
+    ```
+- (例3) カラーセンサ1つの場合
+
+    ```
+    {
+        "I2CHubPublisher": {
+            "0": {
+                "name": "ColorSensorPublisher",
+                "address": "0x29",
+                "topic_name": "color_value"
+            },
+            "address": "0x70"
+        }
+    }
+    ```
+- (例4) カラーセンサ2つの場合
+
+    ```
+    {
+        "I2CHubPublisher": {
+            "0": {
+                "name": "ColorSensorPublisher",
+                "address": "0x29",
+                "topic_name": "color_value0"
+            },
+            "1": {
+                "name": "ColorSensorPublisher",
+                "address": "0x29",
+                "topic_name": "color_value1"
+            },
+            "address": "0x70"
+        }
+    }
+    ```
+
+### モータ用configの設定
+userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き換える．
+
+1. controller_config.yaml
+    - (例1) アーム型ロボットの場合
+    ```
+    ## controlelr settings
+    dxl_read_period: 0.01
+    dxl_write_period: 0.01
+    publish_period: 0.01
+    ```
+    - (例2) 車輪型ロボットの場合
+    ```
+    ## controlelr settings
+    dxl_read_period: 0.01
+    dxl_write_period: 0.01
+    publish_period: 0.01
+    ## wheel controller settings
+    mobile_robot_config:
+    actuator_id: # 自分の使用するモータのIDを記載する
+    - X 
+    - Y
+    - Z
+    - W
+    actuator_mounting_angle: # 回転軸の方向
+    - -1.57079632679 
+    - 0.0
+    - 1.57079632679
+    - 3.14159265359
+    omni_mode: true
+    radius_of_wheel: 0.024
+    seperation_between_wheels: 0.16
+    ```
+1. dynamixel_config.yaml
+   - (例1) アーム型ロボットの場合
+    ```
+    LINK_0:             # 該当するJointName
+        ID: X           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 3
+    LINK_1:             # 該当するJointName
+        ID: Y           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 3
+    LINK_2:             # 該当するJointName
+        ID: Z           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 3
+    LINK_3:             # 該当するJointName
+        ID: W           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 3
+    ```
+   - (例2) 車輪型ロボットの場合
+   ```
+    WHEEL_0:            # 該当するJointName
+        ID: X           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 1
+    WHEEL_1:            # 該当するJointName
+        ID: Y           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 1
+    WHEEL_2:            # 該当するJointName
+        ID: Z           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 1
+    WHEEL_3:            # 該当するJointName
+        ID: W           # モータID
+        Return_Delay_Time: 0
+        Operating_Mode: 1
+   ```
+
+## 実行手順
+1. センサ，モータをつないだ後raspberry piを起動する．
+1. `cps_rpi_docker/userdir`に必要なプログラム,bodyファイル,RIの設定ファイルをコピーする．
+1. ターミナルを立ち上げる．
+1. 以下コマンドを実行する．
+    ```
+    cd cps_rpi_docker/docker
+    ./run.sh
+    ```
+    ```
+    export /catkin_ws/devel/setup.bash
+    roslaunch run_robot.launch
+    ```
+1. 別のターミナルを立ち上げる．
+1. 以下コマンドを実行する．
+    ```
+    cd cps_rpi_docker/docker
+    ./exec.sh
+    ```
+    ```
+    export /catkin_ws/devel/setup.bash
+    python3 user_prog.py
+    ```
