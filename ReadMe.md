@@ -232,7 +232,7 @@ userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き�
     ./run.sh
     ```
     ```
-    export /catkin_ws/devel/setup.bash
+    source /catkin_ws/devel/setup.bash
     roslaunch run_robot.launch
     ```
 1. 別のターミナルを立ち上げる．
@@ -242,6 +242,6 @@ userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き�
     ./exec.sh
     ```
     ```
-    export /catkin_ws/devel/setup.bash
+    source /catkin_ws/devel/setup.bash
     python3 user_prog.py
     ```
