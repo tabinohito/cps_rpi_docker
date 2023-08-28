@@ -168,19 +168,19 @@ userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き�
     publish_period: 0.01
     ## wheel controller settings
     mobile_robot_config:
-    actuator_id: # 自分の使用するモータのIDを記載する
-    - X 
-    - Y
-    - Z
-    - W
-    actuator_mounting_angle: # 回転軸の方向
-    - -1.57079632679 
-    - 0.0
-    - 1.57079632679
-    - 3.14159265359
-    omni_mode: true
-    radius_of_wheel: 0.024
-    seperation_between_wheels: 0.16
+      actuator_id: # 自分の使用するモータのIDを記載する
+      - X 
+      - Y
+      - Z
+      - W
+      actuator_mounting_angle: # 回転軸の方向
+      - -1.57079632679 
+      - 0.0
+      - 1.57079632679
+      - 3.14159265359
+      omni_mode: true
+      radius_of_wheel: 0.024
+      seperation_between_wheels: 0.16
     ```
 1. dynamixel_config.yaml
    - (例1) アーム型ロボットの場合
