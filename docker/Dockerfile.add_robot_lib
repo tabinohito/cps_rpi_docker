@@ -18,7 +18,8 @@ RUN apt update && \
                     libeigen3* \
                     libyaml-cpp-dev \
                     libusb-1.0* \
-                    ros-noetic-opencv-apps && \
+                    ros-noetic-opencv-apps \
+                    ros-noetic-usb-cam && \
     apt clean && \
     rm -rf /var/lib/apt/lists/
 
