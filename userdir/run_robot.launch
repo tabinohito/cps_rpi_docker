@@ -3,7 +3,7 @@
     <arg name="dynamixel_settings"      default="/userdir/dynamixel_config.yaml"/> 
     <arg name="use_cmd_vel"             default="true" />
     <arg name="controller_settings"     default="/userdir/controller_config.yaml" />
-    <arg name="joint_trajectory_name"   default="~trajectory_controller/command" />
+    <arg name="joint_trajectory_name"   default="~joint_controller/command" />
 
     <arg name="usb_port"                default="/dev/ttyUSB0"/>
     <arg name="dxl_baud_rate"           default="1000000"/>
