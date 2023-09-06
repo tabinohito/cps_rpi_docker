@@ -223,10 +223,27 @@ userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き�
    ```
 
 ## 実行手順
+1. jupyterのターミナルでjupyterファイルをpyファイルにターミナルでコマンドを実行し，変換する．
+    ```
+    jupyter nbconvert --to script <jupyterfile>
+    ```
 1. センサ，モータをつないだ後raspberry piを起動する．
-1. `cps_rpi_docker/userdir`に必要なプログラム,bodyファイル,RIの設定ファイルをコピーする．
-1. ターミナルを立ち上げる．
-1. 以下コマンドを実行する．
+1. VSCodeでリモートログインする．(Tips参照)
+1. raspberry piの`cps_rpi_docker/userdir`に必要なプログラム,bodyファイル,RIの設定ファイルをコピーする．
+    - ファイルコピー方法
+        1. jupyterから手元PCへダウンロードし，そのファイルをVSCodeを使ってRasspberry piへアップロードする
+        1. rsyncコマンドを用いて，直接コピーする．
+            - ファイルごと
+                ```
+                rsync -ave ssh <filename> irsl@<IP_address>:cps_rpi_docker/userdir/.
+                ```
+            - ディレクトリごと
+                ```
+                rsync -ave ssh /userdir/ irsl@<IP_address>:cps_rpi_docker/userdir/
+                ```
+1. VSCodeでセンサおよびモータ用のconfigを作成する．
+1. VSCodeを用いてraspberry piのターミナルを立ち上げる．
+1. 開いたターミナルで以下コマンドを実行する．
     ```
     cd cps_rpi_docker/docker
     ./run.sh
@@ -235,15 +252,27 @@ userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き�
     source /catkin_ws/devel/setup.bash
     roslaunch run_robot.launch
     ```
-1. 別のターミナルを立ち上げる．
-1. 以下コマンドを実行する．
+1. VSCodeを用いてraspberry piの別のターミナルを立ち上げる．
+1. 必要に応じてセンサ値やモータの角度の確認を行う．
+    1. センサの確認方法
+        - ターミナルで以下のコマンドを実行する
+            ```
+            rostopic echo /<robotname>/<sensor_name>/value
+            ```
+        コマンド中の`/<robotname>/<sensor_name>/value`はrobotointerface.yaml中の`topic`の部分に該当する．
+    2. モータの確認方法
+        - ターミナルで以下のコマンドを実行し，`position`の項目を確認する．
+            ```
+            rostopic echo /<robotname>/joint_states
+            ```
+1. 開いているターミナルで以下コマンドを実行する．
     ```
     cd cps_rpi_docker/docker
     ./exec.sh
     ```
     ```
     source /catkin_ws/devel/setup.bash
-    python3 user_prog.py
+    python3 <user_prog>.py
     ```
 
 # Tips 
@@ -281,4 +310,16 @@ userdir 内にある`controller_config.yaml`と`dynamixel_config.yaml`を書き�
 ### ターミナルの開き方
 - 接続後`Ctrl + @`でターミナルが開く．
 ### ファイルアップロード
-- 接続後ホストのファイルをVSCodeの エクスプローラーへドラックアンドドロップすることでできる．
+- 接続後に手元PCファイルをVSCodeの エクスプローラーへドラックアンドドロップすることでできる．(Jupyterからのファイルは直接アップロードできないので，一度手元のPCにダウンロードしてからアップロードすること．)
+
+
+## Dynamixelに関して
+### 接続されているDynamixelの確認方法
+1. ターミナルAで以下コマンドを実行する．
+    ```
+    roscore
+    ```
+2. ターミナルBで以下コマンドを実行する．
+    ```
+    rosrun dynamixel_workbench_controllers find_dynamixel /dev/ttyUSB0
+    ```
