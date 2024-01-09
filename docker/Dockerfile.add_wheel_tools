@@ -9,4 +9,3 @@ RUN apt update && \
         ros-noetic-joy \
         ros-noetic-openzen-sensor \
         python3-catkin-tools 
-                
