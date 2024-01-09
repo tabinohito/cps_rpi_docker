@@ -1,4 +1,9 @@
 <launch>
+    <arg name="use_gyro" default="false"/>
+    <group if="$(arg use_gyro)">
+        <node name="openzen_sensor_node" pkg="openzen_sensor" type="openzen_sensor_node" />
+    </group>
+    
     <node name="joy_node" pkg="joy" type="joy_node" />
-    <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py" output="screen"/>
+    <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py"/>
 </launch>
