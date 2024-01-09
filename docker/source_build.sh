@@ -1,6 +1,6 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-IMAGE_NAME=cps_docker:latest
+IMAGE_NAME=cps_docker_wheel:latest
 CONTAINER_NAME=cps_docker_sourcebuild
 WORK_DIR="/catkin_ws"
 

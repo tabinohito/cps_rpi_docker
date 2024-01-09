@@ -1,0 +1,12 @@
+ARG BASE_IMAGE=cps_docker
+FROM ${BASE_IMAGE}
+
+RUN pip3 install ds4drv
+
+RUN apt update && \
+    DEBIAN_FRONTEND=nonineractive \
+    apt install -y \
+        ros-noetic-joy \
+        ros-noetic-joystick-drivers \
+        python3-catkin-tools
+                
