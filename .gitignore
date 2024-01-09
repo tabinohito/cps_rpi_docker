@@ -6,6 +6,7 @@ catkin_ws/src/sensor_pi/script/__pycache__
 catkin_ws/src/sensor_pi/config/test_sensor.json
 *pyc
 homedir/*
+!catkin_ws/src/wheel_tools
 !homedir/.bashrc
 !homedir/.gitkeep
 userdir/*
