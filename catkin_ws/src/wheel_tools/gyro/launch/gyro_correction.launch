@@ -1,0 +1,6 @@
+<launch>
+    <node name="openzen_sensor_node" pkg="openzen_sensor" type="openzen_sensor_node">
+        <param name="_sensor_name" value="devicefile:/dev/ttyUSB1"/>
+    </node>
+    <node name="gyro_correction" pkg="gyro_correction" type="gyro_correction.py" output="screen"/>
+</launch>
