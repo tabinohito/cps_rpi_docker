@@ -7,6 +7,5 @@ RUN apt update && \
     DEBIAN_FRONTEND=nonineractive \
     apt install -y \
         ros-noetic-joy \
-        ros-noetic-joystick-drivers \
         python3-catkin-tools
                 
