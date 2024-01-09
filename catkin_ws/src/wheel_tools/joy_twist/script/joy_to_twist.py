@@ -6,14 +6,16 @@ from geometry_msgs.msg import Twist
 
 def control(msg, twist_pub):#joy to twist
     print(msg)
-    L_horizontal = msg.axes[0]  #左ジョイスティック（左右）
+    R_horizontal = msg.axes[3]  #右ジョイスティック（左右）
     L_vertical = msg.axes[1]    #左ジョイスティック（上下）
+    L_horizontal = msg.axes[0]  #左ジョイスティック（左右）
+
     circle = msg.buttons[1]
-    velocity = [L_horizontal*(1+circle), L_vertical*(1+circle)]
+    velocity = [R_horizontal*(1+circle), L_vertical*(1+circle), L_horizontal*(1+circle)]
 
     t = Twist() #Twistのインスタンスを生成
 
-    t.angular.z, t.linear.x = velocity #twistにjoyから取得したデータを当てはめる
+    t.angular.z, t.linear.x , t.linear.y = velocity #twistにjoyから取得したデータを当てはめる
 
     twist_pub.publish(t)    #twistを配信
 
