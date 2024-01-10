@@ -1,0 +1,3 @@
+<launch>
+    <node name="msg2action_bridge" pkg="msg2action_bridge" type="msg2action_bridge.py" output="screen"/>
+</launch>
