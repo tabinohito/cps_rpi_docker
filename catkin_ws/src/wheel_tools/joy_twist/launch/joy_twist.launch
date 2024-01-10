@@ -4,13 +4,12 @@
     <group if="$(arg use_gyro)">
         <include file="$(find gyro_correction)/launch/gyro_correction.launch"/>
         <param name="sensor_name" value="$(arg sensor_name)" />
-        <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py">
-            <remap from="/joy/cmde_vel" to="/arm_robot/cmd_vel" />
-        </node>
+        <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py"/>
     </group>
     
     <group unless="$(arg use_gyro)">
         <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py"/>    
+        <remap from="/joy/cmde_vel" to="/arm_robot/cmd_vel" />
     </group>
     
     <node name="joy_node" pkg="joy" type="joy_node" />
