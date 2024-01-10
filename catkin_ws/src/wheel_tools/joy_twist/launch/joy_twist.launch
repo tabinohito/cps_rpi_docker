@@ -1,7 +1,9 @@
 <launch>
     <arg name="use_gyro" default="false"/>
+    <arg name="sensor_name" default="devicefile:/dev/ttyUSB0" />
     <group if="$(arg use_gyro)">
-        <node name="openzen_sensor_node" pkg="openzen_sensor" type="openzen_sensor_node" />
+        <include file="$(find gyro_correction)/launch/gyro_correction.launch"/>
+        <param name="sensor_name" value="$(arg sensor_name)" />
     </group>
     
     <node name="joy_node" pkg="joy" type="joy_node" />
