@@ -9,25 +9,9 @@ sim_mode = False
 import os
 import time
 
-class ros_conf:
+class msg2action():
     def __init__(self):
-        os.environ['ROS_MASTER_URI']='http://localhost:11311'
-        os.environ['ROS_IP'] = 'localhost'
-        os.environ['ROS_HOSTNAME'] = 'localhost'
-        
-    # def __init__(self,robot_ip_addr,host_ip_addr):
-    #     os.environ['ROS_MASTER_URI']='http://{}:11311'.format(robot_ip_addr)
-    #     os.environ['ROS_IP'] = host_ip_addr
-    #     os.environ['ROS_HOSTNAME'] = host_ip_addr
-
-class msg2action(ros_conf):
-    def __init__(self):
-        super().__init__()
         self.msg2action_init()
-
-    # def __init__(self,robot_ip_addr,host_ip_addr):
-    #     super().__init__(robot_ip_addr,host_ip_addr)
-    #     self.msg2action_init()
 
     def msg2action_init(self):
         rospy.init_node('msg2action_bridge') # ノードの生成
