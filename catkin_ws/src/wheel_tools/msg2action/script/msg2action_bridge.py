@@ -42,9 +42,9 @@ class msg2action(ros_conf):
         
         print('data is '+data.data)
         if data.data == "Right":
-            twist.linear.y = 0.08
-        elif data.data == "Left":
             twist.linear.y = -0.08
+        elif data.data == "Left":
+            twist.linear.y = 0.08
         elif data.data == "Forward":
             twist.linear.x = 0.08
         elif data.data == "Back":
