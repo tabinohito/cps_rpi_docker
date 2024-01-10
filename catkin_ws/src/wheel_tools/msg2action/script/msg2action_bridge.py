@@ -25,10 +25,6 @@ class msg2action(ros_conf):
         super().__init__()
         self.msg2action_init()
 
-    def __init__(self,robot_ip_addr,host_ip_addr):
-        super().__init__(robot_ip_addr,host_ip_addr)
-        self.msg2action_init()
-
     def msg2action_init(self):
         rospy.init_node('msg2action_bridge') # ノードの生成
         # Subscriberの作成
