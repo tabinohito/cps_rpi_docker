@@ -42,13 +42,13 @@ class msg2action(ros_conf):
         
         print('data is '+data.data)
         if data.data == "Right":
-            twist.linear.x = 0.08
-        elif data.data == "Left":
-            twist.linear.x = -0.08
-        elif data.data == "Forward":
             twist.linear.y = 0.08
-        elif data.data == "Back":
+        elif data.data == "Left":
             twist.linear.y = -0.08
+        elif data.data == "Forward":
+            twist.linear.x = 0.08
+        elif data.data == "Back":
+            twist.linear.x = -0.08
             
         self.twist_publish(twist)
 
