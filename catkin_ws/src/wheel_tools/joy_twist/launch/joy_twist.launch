@@ -9,7 +9,7 @@
         </node>
     </group>
     
-    <group unless="$(arg mode)">
+    <group unless="$(arg use_gyro)">
         <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py"/>    
     </group>
     
