@@ -9,7 +9,7 @@
     
     <group unless="$(arg use_gyro)">
         <node name="joy_to_twist" pkg="joy_twist" type="joy_to_twist.py"/>    
-        <remap from="/joy/cmde_vel" to="/arm_robot/cmd_vel" />
+        <remap from="/joy/cmd_vel" to="/arm_robot/cmd_vel" />y
     </group>
     
     <node name="joy_node" pkg="joy" type="joy_node" />
