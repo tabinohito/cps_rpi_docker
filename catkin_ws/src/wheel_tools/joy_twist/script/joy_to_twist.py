@@ -7,8 +7,8 @@ from geometry_msgs.msg import Twist
 def control(msg, twist_pub):#joy to twist
     print(msg)
     R_horizontal = msg.axes[3]  #右ジョイスティック（左右）
-    L_vertical = msg.axes[1]    #左ジョイスティック（上下）
-    L_horizontal = msg.axes[0]  #左ジョイスティック（左右）
+    L_vertical = msg.axes[1]*0.5    #左ジョイスティック（上下）
+    L_horizontal = msg.axes[0]*0.5  #左ジョイスティック（左右）
 
     circle = msg.buttons[1]
     velocity = [R_horizontal*(1+circle), L_vertical*(1+circle), L_horizontal*(1+circle)]
